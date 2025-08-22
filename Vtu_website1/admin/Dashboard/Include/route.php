@@ -45,9 +45,17 @@
 
     //Admin Login
     if(isset($_GET["login"])){
-        $controller = new AccountAccess;
-        echo $controller->verifyAdminLogin();
+    // Temporary hardcoded admin login - REMOVE AFTER SETUP!
+    if($_POST['username'] === 'tempadmin' && $_POST['password'] === 'temp123') {
+        $_SESSION['sysId'] = 1;
+        echo 0; // Success
         exit();
+    }
+    
+    $controller = new AccountAccess;
+    echo $controller->verifyAdminLogin();
+    exit();
+}
     }
     else{
         global $controller;
@@ -466,6 +474,7 @@
                 return "";
         }
     }
+
 
 
 ?>
